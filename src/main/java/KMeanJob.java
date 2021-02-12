@@ -21,22 +21,25 @@ public class KMeanJob {
         }
         String inputPath = otherArgs[0];
         String k = otherArgs[1];
-        StringBuilder centerPath = new StringBuilder("/keman/tmp/tmpCenters-" + k + "-clusters");
+        System.out.println("InputPath and k :"  + inputPath + " " + k);
+        StringBuilder centerPath = new StringBuilder("/tmpCenters-" + k + "-clusters");
         
-        int rounds = 1;
-        // Use 2 for testing
-        int maxNumberRound = 2;
-
-        while(rounds == 1 || (Utils.compareCenters(
-                centerPath.append(rounds - 1).toString(),
-                centerPath.append(rounds).toString())) && rounds < maxNumberRound){
-            System.out.println("### Round number : " + rounds);
-            run(inputPath, 
-                    centerPath.append(rounds - 1).toString(),
-                    centerPath.append(rounds).toString(),
-                    Integer.parseInt(k));
-            rounds ++;
-        }
+        Utils.testLoadFile(inputPath);
+        Utils.testLoadFile(centerPath.append(0).toString());
+//        int rounds = 1;
+//        // Use 2 for testing
+//        int maxNumberRound = 2;
+//
+//        while(rounds == 1 || (Utils.compareCenters(
+//                centerPath.append(rounds - 1).toString(),
+//                centerPath.append(rounds).toString())) && rounds < maxNumberRound){
+//            System.out.println("### Round number : " + rounds);
+//            run(inputPath, 
+//                    centerPath.append(rounds - 1).toString(),
+//                    centerPath.append(rounds).toString(),
+//                    Integer.parseInt(k));
+//            rounds ++;
+//        }
     }
 
     // Run map-reduce job using inputPath and prevCenterPath

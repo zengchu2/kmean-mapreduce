@@ -32,6 +32,14 @@ public class Utils {
         // if centerPath file exists, then read it, else use random points from datainput file
         return MyIOUtils.IOReadCentersFromPath(centerPath);
     }
+
+    // Load file and printout every line.
+    public static void testLoadFile(String inputPath) throws IOException {
+        ArrayList<ArrayList<Double>> lst = MyIOUtils.IOReadCentersFromPath(inputPath);
+        for(int i = 0; i < lst.size(); i++){
+            System.out.println(lst.get(i).toString());
+        }
+    }
 }
 
 class NumericUtils {
